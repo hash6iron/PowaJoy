@@ -2,13 +2,23 @@
 Compilar con la version 1.8.x de Arduino
 
 1. Para ver los pines seleccionados, ver imagen "arduino_mini_pro_328P_IO.jpg"
-2. Los pines son los marcados en la imagen con color MORADO (IDE)
-3. La relación de pines usados.
+2. Los pines son los marcados en la imagen con color MORADO/VERDE (IDE)
+3. La relación de pines usados (ver mas abajo).
 
-  ATmega 328P board pinout:
-  
   NOTA: Coger tanto VCC como GND del conector PS/2, para el ATMEGA 328P
-  
+
+--------------------------------------------------------------------------------------
+
+Compile with Arduino version 1.8.x
+
+1. To see the selected pins, see image "arduino_mini_pro_328P_IO.jpg"
+2. The pins are those marked in the image with PURPLE/GREEN color (IDE)
+3. The ratio of pins used (see below).
+
+ NOTE: Take both VCC and GND from the PS/2 connector, for the ATMEGA 328P
+
+  ATmega 328P board pinout: 
+
   PS/2
   ----------------------------------------------------------------
   CLK  pin 12

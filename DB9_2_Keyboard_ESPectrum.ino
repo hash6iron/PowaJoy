@@ -2,6 +2,9 @@
 Project:  DB9 Joysticks to PS/2 adapter firmware
 Author:   David Carrión - 2023
 PS2Dev library: https://github.com/Harvie/ps2dev
+
+Forked: Antonio Tamairón - 2024
+Description fork: New version for Arduino mini pro (ATMEGA 328P)
 */
 
 

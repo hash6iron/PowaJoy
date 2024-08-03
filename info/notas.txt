@@ -1,0 +1,39 @@
+
+Compilar con la version 1.8.x de Arduino
+
+1. Para ver los pines seleccionados, ver imagen "arduino_mini_pro_328P_IO.jpg"
+2. Los pines son los marcados en la imagen con color MORADO (IDE)
+3. La relación de pines usados.
+
+  ATmega 328P board pinout:
+  
+  NOTA: Coger tanto VCC como GND del conector PS/2, para el ATMEGA 328P
+  
+  PS/2
+  ----------------------------------------------------------------
+  CLK  pin 12
+  DATA pin 10
+
+  PORT 1
+  ----------------------------------------------------------------
+  Arduino A0 -> DB9 pin 1: Up
+  Arduino A1 -> DB9 pin 2: Down
+  Arduino A2 -> DB9 pin 3: Left
+  Arduino A3 -> DB9 pin 4: Right
+  Arduino VCC-> DB9 pin 5: VCC 5V
+  Arduino 5  -> DB9 pin 6: A / Primary fire
+  Arduino 8  -> DB9 pin 7: Selection signal (allows more buttons)
+  Arduino GND-> DB9 pin 8: GND
+  Arduino 9  -> DB9 pin 9: SELECT BUTTON / Secondary fire
+
+  PORT 2
+  ----------------------------------------------------------------
+  Arduino 3  -> DB9 pin 1: Up
+  Arduino 2  -> DB9 pin 2: Down
+  Arduino 1  -> DB9 pin 3: Left
+  Arduino 0  -> DB9 pin 4: Right
+  Arduino VCC-> DB9 pin 5: VCC 5V
+  Arduino 4  -> DB9 pin 6: A / Primary fire
+  Arduino 6  -> DB9 pin 7: Selection signal (allows more buttons)
+  Arduino GND-> DB9 pin 8: GND
+  Arduino 7  -> DB9 pin 9: SELECT BUTTON / Secondary fire

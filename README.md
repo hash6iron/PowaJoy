@@ -9,7 +9,7 @@ See (schematics/esquema_328P.pdf)
 
 ![Alt text](schematics/esquema.png?raw=true "Schematic for Powa-Joy")
 
-# DB9_2_Keyboard
+# DB9_2_Keyboard (by David Carrión - Folked by hash6Iron)
 
 Converts DB9 joysticks button presses to keyboard scancodes
 

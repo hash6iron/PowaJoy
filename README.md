@@ -2,6 +2,11 @@
 This version is forked from original by David Carrión. 
 This version is only for PS/2 and ATMEGA 328P micro (not USB implemented) to be used with ESPectrum emulator. See info/ folder to see information about pinout
 
+# POWA-JOY schematics
+This is the schematics to make a Powa-joy. It's an adapter DB9 to PS/2 for ESPectrum emulator on ESP32 LilyGo board. See (schematic.pdf)
+
+
+
 # DB9_2_Keyboard
 
 Converts DB9 joysticks button presses to keyboard scancodes

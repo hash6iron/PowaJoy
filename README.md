@@ -9,12 +9,13 @@ See (schematics/esquema_328P.pdf)
 
 ![Alt text](schematics/esquema.png?raw=true "Schematic for Powa-Joy")
 
+This folk aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards like Arduino Mini.
+
+![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)
+
 # DB9_2_Keyboard (by David Carrión - Folked by hash6Iron)
 
 Converts DB9 joysticks button presses to keyboard scancodes
-
-
-This folk aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards like Arduino Pro micro.
 
 This translation is a big help for ESPectrum (code https://github.com/EremusOne/ZX-ESPectrum-IDF , with LilyGo board to use conventional 80's DB9 joysticks or compatible DB9 gamepads (wired or not like as 8-bitDO gamepad tested)
 

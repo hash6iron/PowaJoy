@@ -52,7 +52,7 @@ The default map for each joystick to execute the translation from joystick butto
 The keymaps can be changed by pressing a direction button (up, down, left, right) while the board is plugged or powered up.
 
 
-### FLASH INSTRUCTIONS:
+# FLASH INSTRUCTIONS:
 
 Tha Arduino IDE and tools can be used, but to flash easily the firmware on the ATmega 328P this DIY keyboard's updater program can be used also by using the  .HEX file available under the build/PowaJoy folder of the project. 
 Flash tools could be downloaded from:

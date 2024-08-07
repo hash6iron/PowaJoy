@@ -15,7 +15,7 @@ This folk aims to translate joysticks/pads button presses to keyboard presses by
 
 # DB9_2_Keyboard (by David Carrión - Folked by hash6Iron)
 
-Converts DB9 joysticks button presses to keyboard scancodes
+Firmware to converts DB9 joysticks button presses to keyboard scancodes through PS/2 port.
 
 This translation is a big help for ESPectrum (code https://github.com/EremusOne/ZX-ESPectrum-IDF , with LilyGo board to use conventional 80's DB9 joysticks or compatible DB9 gamepads (wired or not like as 8-bitDO gamepad tested)
 

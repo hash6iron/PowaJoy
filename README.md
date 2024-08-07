@@ -16,7 +16,7 @@ Converts DB9 joysticks button presses to keyboard scancodes
 
 This folk aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards like Arduino Pro micro.
 
-This translation is a big help for those emulators like ESPectrum (code https://github.com/EremusOne/ZX-ESPectrum-IDF , with LilyGo board.
+This translation is a big help for ESPectrum (code https://github.com/EremusOne/ZX-ESPectrum-IDF , with LilyGo board to use conventional 80's DB9 joysticks or compatible DB9 gamepads (wired or not like as 8-bitDO gamepad tested)
 
 The code sends keystrokes when a button is pressed on a joystick. Two simulatenous joysticks are supported. PS/2 keyboard scancodes are sent. The supported joysticks are standard one-two buttons joysticks, Sega three buttons joysticks and Sega 6 buttons joysticks.
 

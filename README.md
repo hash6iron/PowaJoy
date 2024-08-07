@@ -1,5 +1,5 @@
 # Important notes
-This version is forked from original by David Carrión. 
+This version is forked from original by David Carrión (https://github.com/dacarsoft/DB9_2_Keyboard). 
 This version is only for PS/2 and ATMEGA 328P micro (not USB implemented) to be used with ESPectrum emulator. See info/ folder to see information about pinout
 
 # PowaJoy schematic

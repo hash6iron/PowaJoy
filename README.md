@@ -59,10 +59,3 @@ Flash tools could be downloaded from:
 > MAC OS: https://github.com/qmk/qmk_toolbox/releases/download/beta/QMK.Toolbox.app.zip
 
 > WINDOWS: https://github.com/qmk/qmk_toolbox/releases/download/beta/qmk_toolbox.exe
-
-
-
-**ACKNOWLEDGEMENTS:**
-
-Antonio Villena (hardware support), Haplo (hardware loan), Víctor Iborra (testing and ideas), David Crespo (testing and protocol info), Armand (testing and ideas).
-

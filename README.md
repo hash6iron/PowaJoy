@@ -52,11 +52,12 @@ The keymaps can be changed by pressing a direction button (up, down, left, right
 
 ### FLASH INSTRUCTIONS:
 
-Tha Arduino IDE and tools can be used, but to flash easily the firmware in the ATmega 328P this DIY keyboard's updater program can be used also by using the proper HEX file available under the build/ folder of the project: 
+Tha Arduino IDE and tools can be used, but to flash easily the firmware in the ATmega 328P this DIY keyboard's updater program can be used also by using the proper HEX file available under the build/ folder of the project. 
+Flash tools could be downloaded from:
 
-MAC OS: https://github.com/qmk/qmk_toolbox/releases/download/beta/QMK.Toolbox.app.zip
+> MAC OS: https://github.com/qmk/qmk_toolbox/releases/download/beta/QMK.Toolbox.app.zip
 
-WINDOWS: https://github.com/qmk/qmk_toolbox/releases/download/beta/qmk_toolbox.exe
+> WINDOWS: https://github.com/qmk/qmk_toolbox/releases/download/beta/qmk_toolbox.exe
 
 
 

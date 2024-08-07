@@ -2,7 +2,7 @@
 This version is forked from original by David Carrión. 
 This version is only for PS/2 and ATMEGA 328P micro (not USB implemented) to be used with ESPectrum emulator. See info/ folder to see information about pinout
 
-# POWA-JOY schematic
+# PowaJoy schematic
 This is the schematic to make a Powa-joy. It's a conversor circuit from DB9 (joystick ports) to PS/2 for ESPectrum emulator on ESP32 LilyGo board. This project uses the firmware by David Carrion (DB9_2_Keyboard_ESPectrum - See description below) adapted to ATMEGA 328P micro.
 
 See (schematics/esquema_328P.pdf)
@@ -52,7 +52,7 @@ The keymaps can be changed by pressing a direction button (up, down, left, right
 
 ### FLASH INSTRUCTIONS:
 
-Tha Arduino IDE and tools can be used, but to flash easily the firmware in the ATmega 328P this DIY keyboard's updater program can be used also by using the proper HEX file available under the build/ folder of the project. 
+Tha Arduino IDE and tools can be used, but to flash easily the firmware on the ATmega 328P this DIY keyboard's updater program can be used also by using the  .HEX file available under the build/PowaJoy folder of the project. 
 Flash tools could be downloaded from:
 
 > MAC OS: https://github.com/qmk/qmk_toolbox/releases/download/beta/QMK.Toolbox.app.zip

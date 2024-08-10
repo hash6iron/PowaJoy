@@ -10,11 +10,11 @@ See (schematics/esquema_328P.pdf)
 
 ![Alt text](schematics/esquema.png?raw=true "Schematic for Powa-Joy")
 
-This folk aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards like Arduino Mini.
+This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards like Arduino Mini.
 
 ![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)
 
-# DB9_2_Keyboard (by David Carrión - Folked by hash6Iron)
+# DB9_2_Keyboard (by David Carrión - Forked by hash6Iron)
 
 Firmware to converts DB9 joysticks button presses to keyboard scancodes through PS/2 port.
 

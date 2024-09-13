@@ -12,11 +12,38 @@ See (schematics/esquema_328P.pdf)
 
 This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards Arduino Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano.
 
-Arduino Mini
+<b>Arduino Mini</b>
 
 ![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)
 
-Arduino Nano
+<b>Arduino Nano</b>
+
+Arduino Nano --> Arduino Mini (pin conversion)
+
+LED
+- D13 --> PIN 13
+
+PS/2 (DATA / CLK)
+- DATA: D10 --> PIN 10
+- CLK:  D12 --> PIN 12
+- 
+PORT 1
+- D8  --> PIN 8
+- D9  --> PIN 9
+- D11 --> PIN 11
+- D14  --> A0
+- D15  --> A1
+- D16  --> A2
+- D17  --> A3
+
+PORT 2
+- D0 --> PIN 0
+- D1 --> PIN 1
+- D2 --> PIN 2
+- D3 --> PIN 3
+- D4 --> PIN 4
+- D6 --> PIN 6
+- D7 --> PIN 7
 
 ![image](https://github.com/user-attachments/assets/04068531-fd36-4ebb-b3d9-fd1ddf13fa01)
 

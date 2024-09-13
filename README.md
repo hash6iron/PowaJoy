@@ -49,6 +49,39 @@ PORT 2
 
 ![image](https://github.com/user-attachments/assets/04068531-fd36-4ebb-b3d9-fd1ddf13fa01)
 
+## Arduino UNO
+
+Pin coversion for Arduino UNO, see below.
+
+Arduino UNO --> Arduino Mini
+
+LED
+- 13 --> PIN 13
+
+PS/2 (DATA / CLK)
+- DATA: 10 --> PIN 10
+- CLK:  12 --> PIN 12
+- 
+PORT 1
+- 8  --> PIN 8
+- 9  --> PIN 9
+- 11 --> PIN 11
+- 14  --> A0
+- 15  --> A1
+- 16  --> A2
+- 17  --> A3
+
+PORT 2
+- 0 --> PIN 0
+- 1 --> PIN 1
+- 2 --> PIN 2
+- 3 --> PIN 3
+- 4 --> PIN 4
+- 6 --> PIN 6
+- 7 --> PIN 7
+
+![image](https://github.com/user-attachments/assets/31de5cf1-ae49-4bb5-b84b-034643c873c6)
+
 
 # DB9_2_Keyboard (by David Carrión - Forked by hash6Iron)
 

@@ -10,9 +10,14 @@ See (schematics/esquema_328P.pdf)
 
 ![image](https://github.com/user-attachments/assets/fb3b092b-68a8-4e7b-b244-6de542be1621)
 
-This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards like Arduino Mini.
+This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards Arduino Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano.
 
+Arduino Mini
 ![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)
+
+Arduino Nano
+![image](https://github.com/user-attachments/assets/04068531-fd36-4ebb-b3d9-fd1ddf13fa01)
+
 
 # DB9_2_Keyboard (by David Carrión - Forked by hash6Iron)
 

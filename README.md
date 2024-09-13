@@ -23,6 +23,7 @@ Pin coversion for Arduino Nano, see below.
 Arduino Nano --> Arduino Mini
 
 VCC --> 5V
+
 GND --> GND
 
 LED
@@ -31,7 +32,7 @@ LED
 PS/2 (DATA / CLK)
 - DATA: D10 --> PIN 10
 - CLK:  D12 --> PIN 12
-- 
+  
 PORT 1
 - D8  --> PIN 8
 - D9  --> PIN 9

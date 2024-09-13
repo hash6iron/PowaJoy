@@ -60,3 +60,6 @@ Flash tools could be downloaded from:
 > MAC OS: https://github.com/qmk/qmk_toolbox/releases/download/beta/QMK.Toolbox.app.zip
 
 > WINDOWS: https://github.com/qmk/qmk_toolbox/releases/download/beta/qmk_toolbox.exe
+
+To upload using AVRDUDE - Example:
+- avrdude -c arduino -P COM4 -b 115200 -p atmega328p -D -U flash:w:firmware.hex

@@ -14,11 +14,13 @@ This fork aims to translate joysticks/pads button presses to keyboard presses by
 
 ## <b>Arduino Mini</b>
 
+See schematic above
 ![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)
 
 ## <b>Arduino Nano</b>
+Pin coversion for Arduino Nano, see below.
 
-Arduino Nano --> Arduino Mini (pin conversion)
+Arduino Nano --> Arduino Mini
 
 LED
 - D13 --> PIN 13

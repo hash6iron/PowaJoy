@@ -13,6 +13,8 @@ See (schematics/esquema_328P.pdf)
 
 This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards Arduino Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano.
 
+01/10/2024: Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing.
+
 ## <b>Arduino Mini</b>
 
 See schematic above

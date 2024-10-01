@@ -1,5 +1,5 @@
 # Release notes
-- 01/10/2024 - Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing.
+- 01/10/2024 - Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing. Now is coded in pin A4
 
 # Important notes
 This version is forked from original by David Carrión (https://github.com/dacarsoft/DB9_2_Keyboard). 

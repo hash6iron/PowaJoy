@@ -3,8 +3,8 @@ Project:  DB9 Joysticks to PS/2 adapter firmware
 Author:   David Carrión - 2023
 PS2Dev library: https://github.com/Harvie/ps2dev
 
-Forked: Antonio Tamairón - 2024
-Description fork: New version for Arduino mini pro (ATMEGA 328P)
+Folked: Antonio Tamairón - 2024 for PowaJOY
+01/10/2024 - Añadido simulacion del típico boton de reset del Spectrum+
 */
 
 
@@ -13,58 +13,7 @@ Description fork: New version for Arduino mini pro (ATMEGA 328P)
 #include "Keyboard.h"
 
 
-//#define AVILLENA_BOARD
-//#define BLUEPILL_BOARD
 #define HASH6IRON_BOARD
-
-#ifdef BLUEPILL_BOARD
-/*
-Bluepill ATmega 32U4 board pinout:
-Arduino 2 -> DB9 pin 1: Up
-Arduino 3 -> DB9 pin 2: Down
-Arduino 4 -> DB9 pin 3: Left
-Arduino 5 -> DB9 pin 4: Right
-Arduino + -> DB9 pin 5: VCC 5V
-Arduino 6 -> DB9 pin 6: A / Primary fire
-Arduino 7 -> DB9 pin 7: Selection signal (allows more buttons)
-Arduino - -> DB9 pin 8: GND
-Arduino 8 -> DB9 pin 9: SELECT / Secondary fire
-*/
-const uint8_t PS2_PINS[2] = { 1, 0 }; // clock 1 PD3, data 0 PD2  // clock PD5 24, data PD6
-
-const uint8_t DB9_1_PINS[6] = { 2, 3, 4, 5, 6, 8 }; // PD1, PD0, PD4, PC6, PD7, PB4 - Exclude pin 7 for Sega controllers
-const uint8_t DB9_1_SELECT = 7; // PE6
-
-const uint8_t DB9_2_PINS[6] = { 10, 16, 14, 15, 18, 20 }; // PB6, PB2, PB3, PB1, PF7, PF5 - Exclude pin 7 for Sega controllers
-const uint8_t DB9_2_SELECT = 19; // PF6
-
-//const uint8_t LED_ONBOARD_1 = LED_BUILTIN_RX; // RXLED 17
-//const uint8_t LED_ONBOARD_2 = LED_BUILTIN_TX; // TXLED 30
-const uint8_t LED_ONBOARD_1 = 17; // RXLED 17
-const uint8_t LED_ONBOARD_2 = 30; // TXLED 30
-#endif
-
-#ifdef AVILLENA_BOARD
-/*
-Bluepill ATmega 32U4 board pinout:
-Arduino A0 -> DB9 pin 1: Up
-Arduino A1 -> DB9 pin 2: Down
-Arduino A2 -> DB9 pin 3: Left
-Arduino A3 -> DB9 pin 4: Right
-Arduino +  -> DB9 pin 5: VCC 5V
-Arduino PB3-> DB9 pin 6: A / Primary fire
-Arduino 7  -> DB9 pin 7: Selection signal (allows more buttons)
-Arduino -  -> DB9 pin 8: GND
-Arduino PB1-> DB9 pin 9: SELECT / Secondary fire
-*/
-const uint8_t PS2_PINS[2] = { 12, 30 }; // clock PD6 12, data PD5 TXLED
-
-const uint8_t DB9_1_PINS[6] = { 18, 19, 20, 21, 14, 15 }; // A0, A1, A2, A3, PB3, PB1 - Exclude pin 7 for Sega controllers
-const uint8_t DB9_1_SELECT = 7; // E6
-
-const uint8_t DB9_2_PINS[6] = { 1, 0, 2, 3, 4, 6 }; // PD3, PD2, PD1, PD0, PD4, PD7 - Exclude pin 7 for Sega controllers
-const uint8_t DB9_2_SELECT = 5; // PC6
-#endif
 
 #ifdef HASH6IRON_BOARD
   /*
@@ -77,7 +26,7 @@ const uint8_t DB9_2_SELECT = 5; // PC6
   Arduino A2 -> DB9 pin 3: Left
   Arduino A3 -> DB9 pin 4: Right
   Arduino VCC-> DB9 pin 5: VCC 5V
-  Arduino 5 -> DB9 pin 6: A / Primary fire
+  Arduino 5 ->  DB9 pin 6: A / Primary fire
   Arduino 8  -> DB9 pin 7: Selection signal (allows more buttons)
   Arduino GND-> DB9 pin 8: GND
   Arduino 9  -> DB9 pin 9: SELECT BUTTON / Secondary fire
@@ -97,14 +46,27 @@ const uint8_t DB9_2_SELECT = 5; // PC6
   */
   const uint8_t PS2_PINS[2] = {12, 10}; // CLK , DATA  
 
+  /* NORMA ATARI - DB9 MACHO
+   * PIN 1 - UP              
+   * PIN 2 - DOWN            
+   * PIN 3 - LEFT
+   * PIN 4 - RIGHT
+   * PIN 5 - FIRE
+   * PIN 6 - FIRE2
+   * PIN 7 - VCC
+   * PIN 8 - GND
+   * PIN 9 - SELECT          
+ 
+ */
+
   // Entradas
   // PORT 1
-  // {UP,DOWN,LEFT,RIGHT,FIRE,FIRE2/SELECT}
+  // {UP,DOWN,LEFT,RIGHT,FIRE,FIRE2,SELECT}
   // A0, A1, A2, A3, PB3, PB1 - Exclude pin 7 for Sega controllers
   const uint8_t DB9_1_PINS[6] = {14, 15, 16, 17, 11, 9 }; 
 
   // PORT 2
-  // {UP,DOWN,LEFT,RIGHT,FIRE,FIRE2/SELECT}
+  // {UP,DOWN,LEFT,RIGHT,FIRE,FIRE2,SELECT}
   // PD3, PD2, PD1, PD0, PD4, PD7 - Exclude pin 7 for Sega controllers
   const uint8_t DB9_2_PINS[6] = { 3, 2, 1, 0, 4, 7 }; 
   
@@ -117,15 +79,15 @@ const uint8_t DB9_2_SELECT = 5; // PC6
 
   // Indicador LED de la placa
   const uint8_t LED_ONBOARD = 13;
+
+  // Botón de RESET para ESPectrum
+  const uint8_t KEYRESET = 18; //A4
 #endif
 
 PS2dev keyboard(PS2_PINS[0], PS2_PINS[1]);  // clock, data
 char lastkeycode; // Keycode to be sent again when something fails
 uint8_t lastkeycodestatus; // Keydown or keyrelease status for the last keycode sent
 //unsigned char keyboardleddata; // Needed for keyboard reading handle code
-
-
-bool USB_AVAILABLE = false;
 
 
 const uint8_t DB9_1_TOTALPINS = sizeof(DB9_1_PINS);
@@ -189,26 +151,7 @@ void setup() {
   // PS/2 keyboard initialization
   keyboard.keyboard_init(); // PS2 keyboard init (notice the k in lowercase)
 
-  
-//  // USB keyboard initialization
-//  uint8_t USB_tries = 6;
-//  while (USB_AVAILABLE == false && USB_tries > 0) 
-//  {
-//    USB_tries--;
-//    delay(500); // Waits 1/2 second for USB host assignment request check
-//    if (UDADDR & _BV(ADDEN)) 
-//    {
-//      Keyboard.begin(); // USB keyboard init (notice the K in uppercase)
-//      USB_AVAILABLE = true;
-//      /*
-//      #ifdef BLUEPILL_BOARD
-//      digitalWrite(LED_ONBOARD_2, LOW);
-//      #endif
-//      */
-//    }
-//  }
-  
-  
+    
   // Joystick in DB9 port 1 initialization
   for ( uint8_t i = 0; i < sizeof(DB9_1_PINS); ++i ) {
     pinMode(DB9_1_PINS[i], INPUT_PULLUP); // Setup joystick 1 press data pins
@@ -253,25 +196,6 @@ void setup() {
     delay(500);
     digitalWrite(LED_ONBOARD, LOW);
   }
-  /*
-  digitalWrite(DB9_1_SELECT, LOW);  // State 4
-  if ((digitalRead(DB9_1_PINS[0]) == LOW) && (digitalRead(DB9_1_PINS[1]) == LOW)) { // Detect if UP and DOWN are sent as pressed at the same time to check 6 buttons mode
-    DB9_1_6BUTTON = true;
-    
-    #ifdef BLUEPILL_BOARD
-    digitalWrite(LED_ONBOARD_2, LOW);
-    #endif
-    
-    digitalWrite(DB9_1_SELECT, HIGH); // State 5
-    digitalWrite(DB9_1_SELECT, LOW);  // State 6
-    digitalWrite(DB9_1_SELECT, HIGH); // State 7
-    delay(15);
-    //digitalWrite(DB9_1_SELECT, LOW);  // State 0
-    //digitalWrite(DB9_1_SELECT, HIGH); // State 1
-    //DB9_1_SELECT_TIME = millis();
-  }
-  */
-  
   
   // Joystick in DB9 port 2 initialization
   for ( uint8_t i = 0; i < sizeof(DB9_2_PINS); ++i ) {
@@ -296,29 +220,16 @@ void setup() {
   if ((digitalRead(DB9_2_PINS[2]) == LOW) && (digitalRead(DB9_2_PINS[3]) == HIGH)) { // Check press for desired map change
     DB9_2_MAP_ACTIVE = 3;
   }
-  /*
-  digitalWrite(DB9_2_SELECT, LOW);    // State 4
-  if ((digitalRead(DB9_2_PINS[0]) == LOW) && (digitalRead(DB9_2_PINS[1]) == LOW)) { // Detect if UP and DOWN are sent as pressed at the same time to check 6 buttons mode
-    DB9_2_6BUTTON = true;
-    
-    #ifdef BLUEPILL_BOARD
-    digitalWrite(LED_ONBOARD_2, LOW);
-    #endif
-    
-    digitalWrite(DB9_2_SELECT, HIGH); // State 5
-    digitalWrite(DB9_2_SELECT, LOW);  // State 6
-    digitalWrite(DB9_2_SELECT, HIGH); // State 7
-    delay(15);
-    //digitalWrite(DB9_2_SELECT, LOW);  // State 0
-    //digitalWrite(DB9_2_SELECT, HIGH); // State 1
-    //DB9_2_SELECT_TIME = millis();
-  }
-  */
 
   digitalWrite(LED_ONBOARD, LOW);
 }
 
-
+void resetPressed()
+{
+  sendPS2keypress(0x78);
+  delay(500);
+  sendPS2keyrelease(0x78);
+}
 
 void loop() {
   /*
@@ -326,6 +237,18 @@ void loop() {
   */
   joystickProcess(DB9_1_PINS, DB9_1_TOTALPINS, DB9_1_SELECT, DB9_1_STATUS, DB9_1_PRESSCOUNT, DB9_1_MAP_PS2,DB9_1_MAP_ACTIVE, 1);
   joystickProcess(DB9_2_PINS, DB9_2_TOTALPINS, DB9_2_SELECT, DB9_2_STATUS, DB9_2_PRESSCOUNT, DB9_2_MAP_PS2, DB9_2_MAP_ACTIVE, 2);
+
+  if(digitalRead(KEYRESET) == LOW)
+  {
+    resetPressed();
+    digitalWrite(LED_ONBOARD, HIGH);
+    digitalWrite(KEYRESET, HIGH);
+    delay(2000);
+  }
+  else
+  {
+    digitalWrite(LED_ONBOARD, LOW);
+  }
   
 }
 
@@ -358,22 +281,6 @@ uint8_t sendPS2keyrelease(char keycode) {
     return keyboard.keyboard_release(keycode);
   }
 }
-
-
-
-/*
-uint8_t readPS2handle(unsigned char &leddata) {
-  if (keyboard.keyboard_handle(&leddata) == 2) {
-    if (lastkeycodestatus == 1) { sendPS2keypress(lastkeycode); }
-    if (lastkeycodestatus == 0) { sendPS2keyrelease(lastkeycode); }
-    #ifdef BLUEPILL_BOARD
-    //digitalWrite(LED_ONBOARD_2, LOW);
-    //delay(2000);
-    //digitalWrite(LED_ONBOARD_2, HIGH);
-    #endif
-  }
-}
-*/
 
 
 

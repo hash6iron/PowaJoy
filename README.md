@@ -1,3 +1,6 @@
+# Release notes
+- 01/10/2024 - Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing.
+
 # Important notes
 This version is forked from original by David Carrión (https://github.com/dacarsoft/DB9_2_Keyboard). 
 
@@ -12,8 +15,6 @@ See (schematics/esquema_328P.pdf)
 
 
 This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards Arduino Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano.
-
-01/10/2024: Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing.
 
 ## <b>Arduino Mini</b>
 
@@ -31,6 +32,9 @@ GND --> GND
 
 LED
 - D13 --> PIN 13
+
+SPECTRUM+ RESET BUTTON
+- A4 (D18) --> A4
 
 PS/2 (DATA / CLK)
 - DATA: D10 --> PIN 10
@@ -71,7 +75,10 @@ LED
 PS/2 (DATA / CLK)
 - DATA: PIN 10 --> PIN 10
 - CLK:  PIN 12 --> PIN 12
-- 
+
+SPECTRUM+ RESET BUTTON
+- A4 --> A4
+  
 PORT 1
 - PIN 8  --> PIN 8
 - PIN 9  --> PIN 9

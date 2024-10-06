@@ -15,7 +15,7 @@ See (schematics/esquema_328P.pdf)
 ![esquema](https://github.com/user-attachments/assets/bc8a1fcd-7506-4225-851f-bc96acc7a61a)
 
 
-This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards Arduino Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano.
+This fork aims to translate joysticks/pads button presses to keyboard presses by using a generic ATmega 328P boards Arduino Pro Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano, and others one.
 
 ## Bill of material (BOM)
 Here I put some of the main materials that you need to ensamble a powaJoy.

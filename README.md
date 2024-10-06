@@ -3,7 +3,7 @@
 - 01/10/2024 - Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing. Now is coded in pin A4
 
 # Important notes
-This version is forked from original by David Carrión (https://github.com/dacarsoft/DB9_2_Keyboard). 
+This gadget uses a forked version of the original DB9_2_Keyboard firmware by David Carrión (https://github.com/dacarsoft/DB9_2_Keyboard). 
 
 This version only covers PS/2 driver of the original firmware. This firmware was modified to adapt to Arduino Pro Mini ATMEGA 328P 5V 16MHz (not USB support) to be used with [ESPectrum emulator](https://zxespectrum.speccy.org/), but it's possible to adapt to others (See info/ folder to see information about pinout and below to conversion pin-out)
 

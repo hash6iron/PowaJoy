@@ -16,7 +16,7 @@ See (schematics/esquema_328P.pdf)
 
 This fork aims to translate joysticks/pads button presses to keyboard presses by using specifically designed for generic ATmega 328P boards Arduino Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano.
 
-## Bild of material
+## Bill of material (BOM)
 Here I put some of the main materials that you need to ensamble a powaJoy.
 
 - Board to mount components: [Aliexpress link](https://es.aliexpress.com/item/32947192552.html?spm=a2g0o.order_list.order_list_main.30.7005194dVDcJUr&gatewayAdapt=glo2esp)
@@ -26,10 +26,9 @@ Here I put some of the main materials that you need to ensamble a powaJoy.
 - (alternative) DB9 plain cable: [Aliexpress link](https://es.aliexpress.com/item/1005003263361996.html?src=google&src=google&albch=shopping&acnt=439-079-4345&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=es1005003263361996&ds_e_product_merchant_id=109053355&ds_e_product_country=ES&ds_e_product_language=es&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=21486736708&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gclid=CjwKCAjwoJa2BhBPEiwA0l0ImBg3ZFjG2OL5UcTD8StD5VbtkMc6Du19GT6VhlCzVoEgdV47jWVb2xoCHFIQAvD_BwE)
 - (alternative) DB9 screw connector: [Aliexpress link](https://es.aliexpress.com/item/32878536274.html?spm=a2g0o.order_list.order_list_main.35.7005194dVDcJUr&gatewayAdapt=glo2esp)
 - Mini-din 6 pins: [Aliexpress link](https://es.aliexpress.com/item/1005007205029726.html?spm=a2g0o.order_list.order_list_main.15.7005194deRnVPS&gatewayAdapt=glo2esp)
-- Others:
--   Wire - 24AWG - [Aliexpress link](https://es.aliexpress.com/item/1005006871233984.html?spm=a2g0o.productlist.main.13.73c9d5648UH7MT&algo_pvid=86483ebd-80b9-4acc-b689-5c69af2bfe81&algo_exp_id=86483ebd-80b9-4acc-b689-5c69af2bfe81-36&pdp_npi=4%40dis%21EUR%2110.24%219.59%21%21%2177.81%2172.87%21%40211b612817282559061668373e721d%2112000038578987755%21sea%21ES%21140664060%21X&curPageLogUid=Lpv6ZCeCR7ke&utparam-url=scene%3Asearch%7Cquery_from%3A)
--   Connectors (not neccesary. optional)
--   Switch for reset feature: [Aliexpress link](https://es.aliexpress.com/item/1005007225726721.html?spm=a2g0o.productlist.main.111.7ade3d0ao6nNmc&algo_pvid=6ac80117-4261-4d03-bd43-9bcfca989772&aem_p4p_detail=202410061608493923290734663100035859130&algo_exp_id=6ac80117-4261-4d03-bd43-9bcfca989772-55&pdp_npi=4%40dis%21EUR%216.49%216.49%21%21%2149.32%2149.32%21%40210390c217282561298786600e1e36%2112000039874208697%21sea%21ES%21140664060%21X&curPageLogUid=UTPZHo4AQYR7&utparam-url=scene%3Asearch%7Cquery_from%3A&search_p4p_id=202410061608493923290734663100035859130_14)
+- Wire - 24AWG - [Aliexpress link](https://es.aliexpress.com/item/1005006871233984.html?spm=a2g0o.productlist.main.13.73c9d5648UH7MT&algo_pvid=86483ebd-80b9-4acc-b689-5c69af2bfe81&algo_exp_id=86483ebd-80b9-4acc-b689-5c69af2bfe81-36&pdp_npi=4%40dis%21EUR%2110.24%219.59%21%21%2177.81%2172.87%21%40211b612817282559061668373e721d%2112000038578987755%21sea%21ES%21140664060%21X&curPageLogUid=Lpv6ZCeCR7ke&utparam-url=scene%3Asearch%7Cquery_from%3A)
+- Connectors (not neccesary. optional)
+- Switch for reset feature: [Aliexpress link](https://es.aliexpress.com/item/1005007225726721.html?spm=a2g0o.productlist.main.111.7ade3d0ao6nNmc&algo_pvid=6ac80117-4261-4d03-bd43-9bcfca989772&aem_p4p_detail=202410061608493923290734663100035859130&algo_exp_id=6ac80117-4261-4d03-bd43-9bcfca989772-55&pdp_npi=4%40dis%21EUR%216.49%216.49%21%21%2149.32%2149.32%21%40210390c217282561298786600e1e36%2112000039874208697%21sea%21ES%21140664060%21X&curPageLogUid=UTPZHo4AQYR7&utparam-url=scene%3Asearch%7Cquery_from%3A&search_p4p_id=202410061608493923290734663100035859130_14)
 
 ## <b>Arduino Mini</b>
 

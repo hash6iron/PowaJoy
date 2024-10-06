@@ -4,7 +4,7 @@
 # Important notes
 This version is forked from original by David Carrión (https://github.com/dacarsoft/DB9_2_Keyboard). 
 
-Its only for PS/2 and ATMEGA 328P micro (not USB implemented) to be used with ESPectrum emulator. See info/ folder to see information about pinout
+This version only covers PS/2 driver of the original firmware. This firmware was modified to adapt to Arduino Pro Mini ATMEGA 328P 5V 16MHz (not USB support) to be used with [ESPectrum emulator](https://zxespectrum.speccy.org/), but it's possible to adapt to others (See info/ folder to see information about pinout and below to conversion pin-out)
 
 # PowaJoy schematic
 This is the schematic to make a Powa-joy. It's a conversor circuit from DB9 (joystick ports) to PS/2 for ESPectrum emulator on ESP32 LilyGo board. This project uses the firmware by David Carrion (DB9_2_Keyboard_ESPectrum - See description below) adapted to ATMEGA 328P micro.

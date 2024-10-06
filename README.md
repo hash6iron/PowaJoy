@@ -31,6 +31,8 @@ Here I put some of the main materials that you need to ensamble a powaJoy.
 - Connectors (not neccesary. optional)
 - Switch for reset feature: [Aliexpress link](https://es.aliexpress.com/item/1005007225726721.html?spm=a2g0o.productlist.main.111.7ade3d0ao6nNmc&algo_pvid=6ac80117-4261-4d03-bd43-9bcfca989772&aem_p4p_detail=202410061608493923290734663100035859130&algo_exp_id=6ac80117-4261-4d03-bd43-9bcfca989772-55&pdp_npi=4%40dis%21EUR%216.49%216.49%21%21%2149.32%2149.32%21%40210390c217282561298786600e1e36%2112000039874208697%21sea%21ES%21140664060%21X&curPageLogUid=UTPZHo4AQYR7&utparam-url=scene%3Asearch%7Cquery_from%3A&search_p4p_id=202410061608493923290734663100035859130_14)
 
+In case that you want a better board support, is making a PCB available on PCBWay site (soon)
+
 ## <b>Arduino Mini</b>
 
 ![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)

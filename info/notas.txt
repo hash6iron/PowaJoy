@@ -31,7 +31,7 @@ Compile with Arduino version 1.8.x
   Arduino A2 -> DB9 pin 3: Left
   Arduino A3 -> DB9 pin 4: Right
   Arduino VCC-> DB9 pin 5: VCC 5V
-  Arduino 5  -> DB9 pin 6: A / Primary fire
+  Arduino 11  -> DB9 pin 6: A / Primary fire
   Arduino 8  -> DB9 pin 7: Selection signal (allows more buttons)
   Arduino GND-> DB9 pin 8: GND
   Arduino 9  -> DB9 pin 9: SELECT BUTTON / Secondary fire

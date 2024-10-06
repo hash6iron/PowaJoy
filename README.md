@@ -32,8 +32,9 @@ Here I put some of the main materials that you need to ensamble a powaJoy.
 
 ## <b>Arduino Mini</b>
 
-See schematic above
 ![image](https://github.com/user-attachments/assets/932ce9b2-a265-4cb4-aad6-31944a4d0395)
+
+See schematic for connection, above.
 
 ## <b>Arduino Nano</b>
 Pin coversion for Arduino Nano, see below.

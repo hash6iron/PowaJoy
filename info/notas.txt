@@ -9,6 +9,7 @@ Compilar con la version 1.8.x de Arduino
 
 --------------------------------------------------------------------------------------
 
+
 Compile with Arduino version 1.8.x
 
 1. To see the selected pins, see image "arduino_mini_pro_328P_IO.jpg"
@@ -17,33 +18,78 @@ Compile with Arduino version 1.8.x
 
  NOTE: Take both VCC and GND from the PS/2 connector, for the ATMEGA 328P
 
-  ATmega 328P board pinout: 
+
+* Arduino Mini *
 
   PS/2
   ----------------------------------------------------------------
   CLK  pin 12
   DATA pin 10
 
+
   PORT 1
   ----------------------------------------------------------------
-  Arduino A0 -> DB9 pin 1: Up
-  Arduino A1 -> DB9 pin 2: Down
-  Arduino A2 -> DB9 pin 3: Left
-  Arduino A3 -> DB9 pin 4: Right
-  Arduino VCC-> DB9 pin 5: VCC 5V
-  Arduino 5  -> DB9 pin 6: A / Primary fire
-  Arduino 8  -> DB9 pin 7: Selection signal (allows more buttons)
-  Arduino GND-> DB9 pin 8: GND
-  Arduino 9  -> DB9 pin 9: SELECT BUTTON / Secondary fire
+   Arduino  |  DB9  |  Function
+   ---------+-------+------------------------------------------
+    A0      |   1   |   Up
+    A1      |   2   |   Down
+    A2      |   3   |   Left
+    A3      |   4   |   Right
+    VCC     |   5   |   VCC 5V
+    11      |   6   |   A, Primary fire
+    8       |   7   |   Selection signal (allows more buttons)
+    GND     |   8   |   GND
+    9       |   9   |   SELECT Button / B, Secondary fire
+
 
   PORT 2
   ----------------------------------------------------------------
-  Arduino 3  -> DB9 pin 1: Up
-  Arduino 2  -> DB9 pin 2: Down
-  Arduino 1  -> DB9 pin 3: Left
-  Arduino 0  -> DB9 pin 4: Right
-  Arduino VCC-> DB9 pin 5: VCC 5V
-  Arduino 4  -> DB9 pin 6: A / Primary fire
-  Arduino 6  -> DB9 pin 7: Selection signal (allows more buttons)
-  Arduino GND-> DB9 pin 8: GND
-  Arduino 7  -> DB9 pin 9: SELECT BUTTON / Secondary fire
+   Arduino  |  DB9  |  Function
+   ---------+-------+------------------------------------------
+      3     |   1   |   Up
+      2     |   2   |   Down
+      1     |   3   |   Left
+      0     |   4   |   Right
+      VCC   |   5   |   VCC 5V
+      4     |   6   |   A, Primary fire
+      6     |   7   |   Selection signal (allows more buttons)
+      GND   |   8   |   GND
+      7     |   9   |   SELECT Button / B, Secondary fire
+
+
+
+* Arduino Nano *
+
+  PS/2
+  ----------------------------------------------------------------
+  CLK  pin D12
+  DATA pin D10
+
+  PORT 1
+  ----------------------------------------------------------------
+   Arduino  |  DB9  |  Function
+   ---------+-------+------------------------------------------
+     D14    |   1   |    Up
+     D15    |   2   |    Down
+     D16    |   3   |    Left
+     D17    |   4   |    Right
+     VCC    |   5   |    VCC 5V
+     D11     |   6   |    A, Primary fire
+     D8     |   7   |    Selection signal (allows more buttons)
+     GND    |   8   |    GND
+     D9     |   9   |    SELECT Button / B, Secondary fire
+
+
+  PORT 2
+  ----------------------------------------------------------------
+   Arduino  |  DB9  |  Function
+   ---------+-------+------------------------------------------
+     D3     |   1   |    Up
+     D2     |   2   |    Down
+     D1     |   3   |    Left
+     D0     |   4   |    Right
+     VCC    |   5   |    VCC 5V
+     D4     |   6   |    A, Primary fire
+     D6     |   7   |    Selection signal (allows more buttons)
+     GND    |   8   |    GND
+     D7     |   9   |    SELECT Button / B, Secondary fire

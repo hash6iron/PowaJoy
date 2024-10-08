@@ -12,7 +12,7 @@ This is the schematic to make a Powa-joy. It's a conversor circuit from DB9 (joy
 
 See (schematics/esquema_328P.pdf)
 
-![esquema](https://github.com/user-attachments/assets/bc8a1fcd-7506-4225-851f-bc96acc7a61a)
+![esquema_v2](https://github.com/user-attachments/assets/c5e52a8b-b3bf-471a-be71-1101354ec2ce)
 
 
 This fork aims to translate joysticks/pads button presses to keyboard presses by using a generic ATmega 328P boards Arduino Pro Mini, but is possible to integrated on, Arduino UNO, Arduino Micro and Arduino Nano, and others one.

@@ -1,3 +1,5 @@
+![powajoy_logo_negro](https://github.com/user-attachments/assets/b26f0fad-a094-4e2e-b594-0151bb460949)
+
 # Release notes
 - 07/10/2024 - Added bill of materials list.
 - 01/10/2024 - Powajoy added new feature, simulation of popular Sinclair ZX Spectrum+ reset button for ESPectrum emulator. This button emulates the F11 key pressing. Now is coded in pin A4

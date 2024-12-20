@@ -52,32 +52,32 @@ VCC --> 5V
 GND --> GND
 
 LED
-- D13 --> PIN 13
+- D13 --> D13
 
 SPECTRUM+ RESET BUTTON
 - A4 (D18) --> A4
 
 PS/2 (DATA / CLK)
-- DATA: D10 --> PIN 10
-- CLK:  D12 --> PIN 12
+- DATA: D10 --> D10
+- CLK:  D12 --> D12
   
 PORT 1
-- D8  --> PIN 8
-- D9  --> PIN 9
-- D11 --> PIN 11
+- D8  --> D8
+- D9  --> D9
+- D11 --> D11
 - A0  --> A0
 - A1  --> A1
 - A2  --> A2
 - A3  --> A3
 
 PORT 2
-- D0 --> PIN 0
-- D1 --> PIN 1
-- D2 --> PIN 2
-- D3 --> PIN 3
-- D4 --> PIN 4
-- D6 --> PIN 6
-- D7 --> PIN 7
+- D0 --> D0
+- D1 --> D1
+- D2 --> D2
+- D3 --> D3
+- D4 --> D4
+- D6 --> D6
+- D7 --> D7
 
 ![image](https://github.com/user-attachments/assets/04068531-fd36-4ebb-b3d9-fd1ddf13fa01)
 

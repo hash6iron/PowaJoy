@@ -80,6 +80,7 @@ PORT 2
 - D7 --> D7
 
 ![image](https://github.com/user-attachments/assets/136fe664-a866-4389-9ad0-0eab0ecaa8be)
+
 (image by nop)
 
 ## Arduino UNO

@@ -51,9 +51,6 @@ VCC --> 5V
 
 GND --> GND
 
-LED
-- D13 --> D13
-
 SPECTRUM+ RESET BUTTON
 - A4 (D18) --> A4
 

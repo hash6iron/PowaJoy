@@ -51,6 +51,9 @@ VCC --> 5V
 
 GND --> GND
 
+LED
+D13 --> D13
+
 SPECTRUM+ RESET BUTTON
 - A4 (D18) --> A4
 
@@ -76,7 +79,7 @@ PORT 2
 - D6 --> D6
 - D7 --> D7
 
-![image](https://github.com/user-attachments/assets/04068531-fd36-4ebb-b3d9-fd1ddf13fa01)
+![image](https://github.com/user-attachments/assets/136fe664-a866-4389-9ad0-0eab0ecaa8be)
 
 ## Arduino UNO
 

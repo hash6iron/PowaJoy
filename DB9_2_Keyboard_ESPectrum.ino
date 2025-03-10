@@ -84,7 +84,7 @@ Folked: Antonio Tamairón - 2024 for PowaJOY
   const uint8_t KEYRESET = 18; //A4
 #endif
 
-bool DETECT_AND_USE_JOYSTICK_3BUTTON = false;
+bool DETECT_AND_USE_JOYSTICK_3BUTTON = true;
 
 PS2dev keyboard(PS2_PINS[0], PS2_PINS[1]);  // clock, data
 char lastkeycode; // Keycode to be sent again when something fails

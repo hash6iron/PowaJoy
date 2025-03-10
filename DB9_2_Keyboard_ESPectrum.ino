@@ -44,38 +44,38 @@ Folked: Antonio Tamairón - 2024 for PowaJOY
   Arduino 7  -> DB9 pin 9: SELECT BUTTON / Secondary fire
 
   */
-  const uint8_t PS2_PINS[2] = {12, 10}; // CLK , DATA  
+  const uint8_t PS2_PINS[2] = {12, 10}; // CLK , DATA
 
   /* NORMA ATARI - DB9 MACHO
-   * PIN 1 - UP              
-   * PIN 2 - DOWN            
+   * PIN 1 - UP
+   * PIN 2 - DOWN
    * PIN 3 - LEFT
    * PIN 4 - RIGHT
    * PIN 5 - FIRE
    * PIN 6 - FIRE2
    * PIN 7 - VCC
    * PIN 8 - GND
-   * PIN 9 - SELECT          
- 
+   * PIN 9 - SELECT
+
  */
 
   // Entradas
   // PORT 1
   // {UP,DOWN,LEFT,RIGHT,FIRE,FIRE2,SELECT}
   // A0, A1, A2, A3, PB3, PB1 - Exclude pin 7 for Sega controllers
-  const uint8_t DB9_1_PINS[6] = {14, 15, 16, 17, 11, 9 }; 
+  const uint8_t DB9_1_PINS[6] = {14, 15, 16, 17, 11, 9 };
 
   // PORT 2
   // {UP,DOWN,LEFT,RIGHT,FIRE,FIRE2,SELECT}
   // PD3, PD2, PD1, PD0, PD4, PD7 - Exclude pin 7 for Sega controllers
-  const uint8_t DB9_2_PINS[6] = { 3, 2, 1, 0, 4, 7 }; 
-  
-  
+  const uint8_t DB9_2_PINS[6] = { 3, 2, 1, 0, 4, 7 };
+
+
   // Salidas
   // PB0
   const uint8_t DB9_1_SELECT = 8;
   // PD6
-  const uint8_t DB9_2_SELECT = 6; 
+  const uint8_t DB9_2_SELECT = 6;
 
   // Indicador LED de la placa
   const uint8_t LED_ONBOARD = 13;
@@ -83,6 +83,8 @@ Folked: Antonio Tamairón - 2024 for PowaJOY
   // Botón de RESET para ESPectrum
   const uint8_t KEYRESET = 18; //A4
 #endif
+
+bool DETECT_AND_USE_JOYSTICK_3BUTTON = false;
 
 PS2dev keyboard(PS2_PINS[0], PS2_PINS[1]);  // clock, data
 char lastkeycode; // Keycode to be sent again when something fails
@@ -131,15 +133,15 @@ bool JOYSTICK_3BUTTON = false;
 
 
 void setup() {
-  
+
   //pinMode(PS2_PINS[0], INPUT);
   //pinMode(PS2_PINS[1], INPUT);
   //DDRD=0; // Help to disable UART to use pins PD3 and PD2 (1 and 0)
 
   #ifdef BLUEPILL_BOARD
-  pinMode(LED_ONBOARD_1, OUTPUT); // Onboard LED 1 
+  pinMode(LED_ONBOARD_1, OUTPUT); // Onboard LED 1
   digitalWrite(LED_ONBOARD_1, HIGH);
-  pinMode(LED_ONBOARD_2, OUTPUT); // Onboard LED 2 
+  pinMode(LED_ONBOARD_2, OUTPUT); // Onboard LED 2
   digitalWrite(LED_ONBOARD_2, HIGH);
   #endif
 
@@ -147,18 +149,18 @@ void setup() {
     pinMode(LED_ONBOARD, OUTPUT);
     digitalWrite(LED_ONBOARD, HIGH);
   #endif
-  
+
   // PS/2 keyboard initialization
   keyboard.keyboard_init(); // PS2 keyboard init (notice the k in lowercase)
 
-    
+
   // Joystick in DB9 port 1 initialization
   for ( uint8_t i = 0; i < sizeof(DB9_1_PINS); ++i ) {
     pinMode(DB9_1_PINS[i], INPUT_PULLUP); // Setup joystick 1 press data pins
   }
   pinMode(DB9_1_SELECT, OUTPUT); // Pin to do signal selection for extra buttons in Sega controllers
   //digitalWrite(DB9_1_SELECT, HIGH);
-  
+
   /*
   // Sega 6 button detection
   digitalWrite(DB9_1_SELECT, LOW);  // State 0
@@ -170,15 +172,15 @@ void setup() {
     DB9_1_MAP_ACTIVE = 1;
     digitalWrite(LED_ONBOARD, HIGH);
     delay(2500);
-    digitalWrite(LED_ONBOARD, LOW); 
+    digitalWrite(LED_ONBOARD, LOW);
   }
   if ((digitalRead(DB9_1_PINS[1]) == LOW) && (digitalRead(DB9_1_PINS[0]) == HIGH)) { // Check press for desired map change
     DB9_1_MAP_ACTIVE = 2;
     digitalWrite(LED_ONBOARD, HIGH);
     delay(1000);
     digitalWrite(LED_ONBOARD, LOW);
-    delay(1000);    
-    digitalWrite(LED_ONBOARD, HIGH);      
+    delay(1000);
+    digitalWrite(LED_ONBOARD, HIGH);
     delay(500);
     digitalWrite(LED_ONBOARD, LOW);
   }
@@ -188,21 +190,24 @@ void setup() {
     delay(500);
     digitalWrite(LED_ONBOARD, LOW);
     delay(500);
-    digitalWrite(LED_ONBOARD, HIGH);      
+    digitalWrite(LED_ONBOARD, HIGH);
     delay(500);
     digitalWrite(LED_ONBOARD, LOW);
     delay(500);
-    digitalWrite(LED_ONBOARD, HIGH); 
+    digitalWrite(LED_ONBOARD, HIGH);
     delay(500);
     digitalWrite(LED_ONBOARD, LOW);
   }
-  
+
   // Joystick in DB9 port 2 initialization
   for ( uint8_t i = 0; i < sizeof(DB9_2_PINS); ++i ) {
     pinMode(DB9_2_PINS[i], INPUT_PULLUP); // Setup joystick 2 press data pins
   }
-  pinMode(DB9_2_SELECT, OUTPUT); // Pin to do signal selection for extra buttons in Sega controllers
-  //digitalWrite(DB9_2_SELECT, HIGH);
+
+  if (DETECT_AND_USE_JOYSTICK_3BUTTON) {
+    pinMode(DB9_2_SELECT, OUTPUT); // Pin to do signal selection for extra buttons in Sega controllers
+    //digitalWrite(DB9_2_SELECT, HIGH);
+  }
 
   /*
   // Sega 6 button detection
@@ -249,7 +254,7 @@ void loop() {
   {
     digitalWrite(LED_ONBOARD, LOW);
   }
-  
+
 }
 
 
@@ -287,38 +292,38 @@ uint8_t sendPS2keyrelease(char keycode) {
 void joystickProcess(const uint8_t JOYSTICK_PINS[6], const uint8_t JOYSTICK_TOTALPINS, const uint8_t JOYSTICK_SELECT, uint8_t JOYSTICK_STATUS[12], uint8_t JOYSTICK_PRESSCOUNT[12], const char JOYSTICK_MAP_PS2[4][12], uint8_t JOYSTICK_MAP_ACTIVE, uint8_t JOYSTICK_INDEX) {
 
   JOYSTICK_3BUTTON = false;
-  
+
   if (DB9_CYCLES_WAITCOUNT > 0) { DB9_CYCLES_WAITCOUNT--; }
-  
+
   // Specific Sega 3 buttons processing
   digitalWrite(JOYSTICK_SELECT, LOW);  // State 2
-  
-  if ((digitalRead(JOYSTICK_PINS[2]) == LOW) && (digitalRead(JOYSTICK_PINS[3]) == LOW)) 
+
+  if (DETECT_AND_USE_JOYSTICK_3BUTTON && (digitalRead(JOYSTICK_PINS[2]) == LOW) && (digitalRead(JOYSTICK_PINS[3]) == LOW))
   { // Detect if LEFT and RIGHT are sent as pressed at the same time to check 3 buttons mode
 
     JOYSTICK_3BUTTON = true;
-    
-    for ( uint8_t i = 4; i < JOYSTICK_TOTALPINS; i++ ) 
+
+    for ( uint8_t i = 4; i < JOYSTICK_TOTALPINS; i++ )
     {
       if (digitalRead(JOYSTICK_PINS[i]) == LOW) {
-        if (JOYSTICK_PRESSCOUNT[i+2] < DB9_CYCLES_PRESS) 
+        if (JOYSTICK_PRESSCOUNT[i+2] < DB9_CYCLES_PRESS)
         {
           JOYSTICK_PRESSCOUNT[i+2]++;
-        } 
-        else if ((JOYSTICK_STATUS[i+2] == 0) && (DB9_CYCLES_WAITCOUNT == 0)) 
+        }
+        else if ((JOYSTICK_STATUS[i+2] == 0) && (DB9_CYCLES_WAITCOUNT == 0))
         {
           JOYSTICK_STATUS[i+2] = 1;
           DB9_CYCLES_WAITCOUNT = DB9_CYCLES_WAIT;
-          
-          if (JOYSTICK_MAP_ACTIVE) 
-          {          
+
+          if (JOYSTICK_MAP_ACTIVE)
+          {
             sendPS2keypress(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+2]);
-          } 
-          else 
+          }
+          else
           {
             keyboard.keyboard_press_ESPectrum_special(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+2]);
           }
-          
+
           #ifdef BLUEPILL_BOARD
             if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD_1, LOW); }
             if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD_2, LOW); }
@@ -326,29 +331,29 @@ void joystickProcess(const uint8_t JOYSTICK_PINS[6], const uint8_t JOYSTICK_TOTA
 
           #ifdef HASH6IRON_BOARD
             if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD, HIGH); }
-            if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, HIGH); }          
+            if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, HIGH); }
           #endif
         }
-      } 
-      else 
+      }
+      else
       {
-        if ((JOYSTICK_PRESSCOUNT[i+2] > 0) && (DB9_CYCLES_WAITCOUNT == 0)) 
+        if ((JOYSTICK_PRESSCOUNT[i+2] > 0) && (DB9_CYCLES_WAITCOUNT == 0))
         {
           JOYSTICK_PRESSCOUNT[i+2]--;
-        } 
-        else if ((JOYSTICK_STATUS[i+2] == 1) && (DB9_CYCLES_WAITCOUNT == 0)) 
+        }
+        else if ((JOYSTICK_STATUS[i+2] == 1) && (DB9_CYCLES_WAITCOUNT == 0))
         {
           JOYSTICK_STATUS[i+2] = 0;
           DB9_CYCLES_WAITCOUNT = DB9_CYCLES_WAIT;
-          
-          if (JOYSTICK_MAP_ACTIVE) {          
+
+          if (JOYSTICK_MAP_ACTIVE) {
             sendPS2keyrelease(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+2]);
-          } 
-          else 
+          }
+          else
           {
             keyboard.keyboard_release_ESPectrum_special(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+2]);
           }
-          
+
           #ifdef BLUEPILL_BOARD
             if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD_1, HIGH); }
             if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD_2, HIGH); }
@@ -356,71 +361,71 @@ void joystickProcess(const uint8_t JOYSTICK_PINS[6], const uint8_t JOYSTICK_TOTA
 
           #ifdef HASH6IRON_BOARD
             if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD, LOW); }
-            if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, LOW); }          
+            if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, LOW); }
           #endif
-          
+
         }
       }
     }
-    
+
   }
 
   // Standard common processing
   digitalWrite(JOYSTICK_SELECT, HIGH); // State 3
-  
-  for ( uint8_t i = 0; i < JOYSTICK_TOTALPINS; i++ ) 
+
+  for ( uint8_t i = 0; i < JOYSTICK_TOTALPINS; i++ )
   {
     if (digitalRead(JOYSTICK_PINS[i]) == LOW) {
-      if (JOYSTICK_PRESSCOUNT[i] < DB9_CYCLES_PRESS) 
+      if (JOYSTICK_PRESSCOUNT[i] < DB9_CYCLES_PRESS)
       {
         JOYSTICK_PRESSCOUNT[i]++;
-      } 
-      else if ((JOYSTICK_STATUS[i] == 0) && (DB9_CYCLES_WAITCOUNT == 0)) 
+      }
+      else if ((JOYSTICK_STATUS[i] == 0) && (DB9_CYCLES_WAITCOUNT == 0))
       {
         JOYSTICK_STATUS[i] = 1;
         DB9_CYCLES_WAITCOUNT = DB9_CYCLES_WAIT;
-        
-        if (JOYSTICK_MAP_ACTIVE) 
-        {          
+
+        if (JOYSTICK_MAP_ACTIVE)
+        {
           sendPS2keypress(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i]);
-        } 
-        else 
+        }
+        else
         {
           keyboard.keyboard_press_ESPectrum_special(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i]);
         }
-        
+
         #ifdef BLUEPILL_BOARD
           if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD_1, LOW); }
           if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD_2, LOW); }
         #endif
-        
+
         #ifdef HASH6IRON_BOARD
           if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD, HIGH); }
-          if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, HIGH); }          
+          if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, HIGH); }
         #endif
       }
-    } 
-    else 
+    }
+    else
     {
-      if ((JOYSTICK_PRESSCOUNT[i] > 0) && (DB9_CYCLES_WAITCOUNT == 0)) 
+      if ((JOYSTICK_PRESSCOUNT[i] > 0) && (DB9_CYCLES_WAITCOUNT == 0))
       {
         JOYSTICK_PRESSCOUNT[i]--;
 
-      } 
-      else if ((JOYSTICK_STATUS[i] == 1) && (DB9_CYCLES_WAITCOUNT == 0)) 
+      }
+      else if ((JOYSTICK_STATUS[i] == 1) && (DB9_CYCLES_WAITCOUNT == 0))
       {
         JOYSTICK_STATUS[i] = 0;
         DB9_CYCLES_WAITCOUNT = DB9_CYCLES_WAIT;
-        
-        if (JOYSTICK_MAP_ACTIVE) 
-        {          
+
+        if (JOYSTICK_MAP_ACTIVE)
+        {
           sendPS2keyrelease(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i]);
-        } 
-        else 
+        }
+        else
         {
           keyboard.keyboard_release_ESPectrum_special(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i]);
         }
-        
+
         #ifdef BLUEPILL_BOARD
           if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD_1, HIGH); }
           if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD_2, HIGH); }
@@ -428,78 +433,78 @@ void joystickProcess(const uint8_t JOYSTICK_PINS[6], const uint8_t JOYSTICK_TOTA
 
         #ifdef HASH6IRON_BOARD
           if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD, LOW); }
-          if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, LOW); }          
+          if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, LOW); }
         #endif
-        
+
       }
     }
   }
-  
+
   // Specific Sega 6 buttons processing
-  if (JOYSTICK_3BUTTON == true) 
+  if (JOYSTICK_3BUTTON == true)
   {
 
     digitalWrite(JOYSTICK_SELECT, LOW);  // State 4
-    
-    if ((digitalRead(JOYSTICK_PINS[0]) == LOW) && (digitalRead(JOYSTICK_PINS[1]) == LOW)) 
+
+    if ((digitalRead(JOYSTICK_PINS[0]) == LOW) && (digitalRead(JOYSTICK_PINS[1]) == LOW))
     { // Detect if UP and DOWN are sent as pressed at the same time to check 6 buttons mode
-      
+
       digitalWrite(JOYSTICK_SELECT, HIGH); // State 5
-      
+
       // Now we can try to read the buttons sequence: up Z - down Y - left X - right M
-      for ( uint8_t i = 0; i < 4; i++ ) 
+      for ( uint8_t i = 0; i < 4; i++ )
       {
-        if (digitalRead(JOYSTICK_PINS[i]) == LOW) 
+        if (digitalRead(JOYSTICK_PINS[i]) == LOW)
         {
-          if (JOYSTICK_PRESSCOUNT[i+8] < DB9_CYCLES_PRESS) 
+          if (JOYSTICK_PRESSCOUNT[i+8] < DB9_CYCLES_PRESS)
           {
             JOYSTICK_PRESSCOUNT[i+8]++;
-          } 
-          else if ((JOYSTICK_STATUS[i+8] == 0) && (DB9_CYCLES_WAITCOUNT == 0)) 
+          }
+          else if ((JOYSTICK_STATUS[i+8] == 0) && (DB9_CYCLES_WAITCOUNT == 0))
           {
             JOYSTICK_STATUS[i+8] = 1;
             DB9_CYCLES_WAITCOUNT = DB9_CYCLES_WAIT;
 
-            if (JOYSTICK_MAP_ACTIVE) 
-            {          
+            if (JOYSTICK_MAP_ACTIVE)
+            {
               sendPS2keypress(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+8]);
-            } 
-            else 
+            }
+            else
             {
               keyboard.keyboard_press_ESPectrum_special(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+8]);
             }
-            
+
             #ifdef BLUEPILL_BOARD
               if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD_1, LOW); }
               if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD_2, LOW); }
             #endif
-            
+
             #ifdef HASH6IRON_BOARD
               if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD, HIGH); }
-              if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, HIGH); }          
+              if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, HIGH); }
             #endif
           }
-        } 
-        else 
+        }
+        else
         {
-          if ((JOYSTICK_PRESSCOUNT[i+8] > 0) && (DB9_CYCLES_WAITCOUNT == 0)) 
+          if ((JOYSTICK_PRESSCOUNT[i+8] > 0) && (DB9_CYCLES_WAITCOUNT == 0))
           {
             JOYSTICK_PRESSCOUNT[i+8]--;
-          } 
-          else if ((JOYSTICK_STATUS[i+8] == 1) && (DB9_CYCLES_WAITCOUNT == 0)) 
+          }
+          else if ((JOYSTICK_STATUS[i+8] == 1) && (DB9_CYCLES_WAITCOUNT == 0))
           {
             JOYSTICK_STATUS[i+8] = 0;
             DB9_CYCLES_WAITCOUNT = DB9_CYCLES_WAIT;
-            
-            if (JOYSTICK_MAP_ACTIVE) 
-            {          
+
+            if (JOYSTICK_MAP_ACTIVE)
+            {
               sendPS2keyrelease(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+8]);
             }
             else
             {
               keyboard.keyboard_release_ESPectrum_special(JOYSTICK_MAP_PS2[JOYSTICK_MAP_ACTIVE][i+8]);
             }
-            
+
             #ifdef BLUEPILL_BOARD
               if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD_1, HIGH); }
               if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD_2, HIGH); }
@@ -507,18 +512,18 @@ void joystickProcess(const uint8_t JOYSTICK_PINS[6], const uint8_t JOYSTICK_TOTA
 
             #ifdef HASH6IRON_BOARD
               if (JOYSTICK_INDEX == 1) { digitalWrite(LED_ONBOARD, LOW); }
-              if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, LOW); }          
+              if (JOYSTICK_INDEX == 2) { digitalWrite(LED_ONBOARD, LOW); }
             #endif
-            
+
           }
         }
       }
-      
+
       digitalWrite(JOYSTICK_SELECT, LOW);  // State 6
       digitalWrite(JOYSTICK_SELECT, HIGH); // State 7
       delay(20);
       digitalWrite(JOYSTICK_SELECT, LOW);  // State 0
       digitalWrite(JOYSTICK_SELECT, HIGH); // State 1
     }
-  }  
+  }
 }

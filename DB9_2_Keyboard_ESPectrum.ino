@@ -158,7 +158,9 @@ void setup() {
   for ( uint8_t i = 0; i < sizeof(DB9_1_PINS); ++i ) {
     pinMode(DB9_1_PINS[i], INPUT_PULLUP); // Setup joystick 1 press data pins
   }
-  pinMode(DB9_1_SELECT, OUTPUT); // Pin to do signal selection for extra buttons in Sega controllers
+  if (DETECT_AND_USE_JOYSTICK_3BUTTON) {
+    pinMode(DB9_1_SELECT, OUTPUT); // Pin to do signal selection for extra buttons in Sega controllers
+  }
   //digitalWrite(DB9_1_SELECT, HIGH);
 
   /*

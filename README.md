@@ -9,6 +9,8 @@ This gadget uses a forked version of the original DB9_2_Keyboard firmware by Dav
 
 This version only covers PS/2 driver of the original firmware for LilyGo TTGO VGA, Olimex FabGL and others. This firmware was modified to adapt to Arduino Pro Mini ATMEGA 328P 5V 16MHz (not USB support) to be used with [ESPectrum emulator](https://zxespectrum.speccy.org/), but it's possible to adapt to others micro (See info/ folder to see information about pinout and below to conversion pin-out)
 
+With LilyGo, when second port is configured for MOUSE, the RESET feature from powaJoy not working fine. This doesn´t occur with joysticks. At the moment this issue was not fixed because ESPectrum has reset support directly from LilyGo GPIO, then the better option is to use GPIO.
+
 # PowaJoy schematic
 This is the schematic to make a Powa-joy. It's a conversor circuit from DB9 (joystick ports) to PS/2 for ESPectrum emulator on ESP32 LilyGo TTGO VGA board, Olimex FabGL board and others. This project uses the firmware by David Carrion (DB9_2_Keyboard_ESPectrum - See description below) but has been adapted to ATMEGA 328P micro.
 
